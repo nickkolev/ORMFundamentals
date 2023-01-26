@@ -1,4 +1,4 @@
-package entitites;
+package entities;
 
 import annotations.Column;
 import annotations.Entity;
@@ -22,10 +22,16 @@ public class User {
     @Column(name = "registration_date")
     private LocalDate registrationDate;
 
+    @Column(name = "last_logged_in")
+    private LocalDate lastLoggedIn;
+
+    public User() {}
+
     public User(String username, int age, LocalDate registrationDate) {
         this.username = username;
         this.age = age;
         this.registrationDate = registrationDate;
+        this.lastLoggedIn = LocalDate.now();
     }
 
     public long getId() {
@@ -58,5 +64,24 @@ public class User {
 
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public LocalDate getLastLoggedIn() {
+        return lastLoggedIn;
+    }
+
+    public void setLastLoggedIn(LocalDate lastLoggedIn) {
+        this.lastLoggedIn = lastLoggedIn;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", age=" + age +
+                ", registrationDate=" + registrationDate +
+                ", lastLoggedIn=" + lastLoggedIn +
+                '}';
     }
 }
